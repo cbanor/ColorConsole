@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard1.6;net45</TargetFrameworks>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>Keystore.pfx</AssemblyOriginatorKeyFile>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PackageProjectUrl>https://github.com/cbanor/ColorConsole/</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/cbanor/ColorConsole/</RepositoryUrl>
+    <Description>Easy console color output control library.</Description>
+    <Copyright>http://the-x.cn?from=nuget_colorconsole</Copyright>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageTags>ColorConsole,Color,Colorful,Shotgun.ColorConsole</PackageTags>
+    <Authors>Shotgun</Authors>
+    <Company>http://the-x.cn/</Company>
+    <Build>$([System.DateTime]::get_Now().ToString('Mdd'))</Build>
+    <Revision>$([System.DateTime]::get_Now().ToString('Hmm'))</Revision>
+    <PackageVersion>1.0.$(Build).$(Revision)</PackageVersion>
+    <PackageIconUrl>https://github.com/cbanor/ColorConsole/blob/master/cmd.png?raw=true</PackageIconUrl>
+    <RepositoryType />
+
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard1.6|AnyCPU'">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="README.txt">
+      <Pack>true</Pack>
+      <PackagePath>README.txt</PackagePath>
+    </Content>
+  </ItemGroup>
+</Project>
