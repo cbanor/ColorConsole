@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 
+#if COLOR_CONSOLE
 namespace Shotgun.ColorConsole
+#else
+namespace Shotgun.Console
+#endif
 {
     public class ColorTextWriter : System.IO.TextWriter
     {
@@ -47,6 +52,7 @@ namespace Shotgun.ColorConsole
         /// </summary>
         public char BackgroundColorTag { get; set; } = '@';
 
+        public override string NewLine => _tw.NewLine;
 
 
         public override void Write(char[] buffer, int index, int count)
@@ -62,6 +68,7 @@ namespace Shotgun.ColorConsole
                 ColorWrite(buffer, index, endIndex);
 
         }
+
 
         private void ColorWrite(char[] buffer, int index, int endIndex)
         {
@@ -160,7 +167,7 @@ namespace Shotgun.ColorConsole
                 case 'C': ci.Color = ConsoleColor.DarkCyan; break;
                 case 'y': ci.Color = ConsoleColor.DarkYellow; break;
                 case 'Y': ci.Color = ConsoleColor.Yellow; break;
-                case 'w': ci.Color = ConsoleColor.Gray; break;// (half White)
+                case 'w': ci.Color = ConsoleColor.Gray; break;// (Dark White)
                 case 'W': ci.Color = ConsoleColor.White; break;
                 case 'm': ci.Color = ConsoleColor.DarkMagenta; break;
                 case 'M': ci.Color = ConsoleColor.Magenta; break;
@@ -187,6 +194,7 @@ namespace Shotgun.ColorConsole
             _tw.Dispose();
             base.Dispose(disposing);
         }
+
     }
 
 }

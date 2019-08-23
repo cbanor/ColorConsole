@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+#if COLOR_CONSOLE
 namespace Shotgun.ColorConsole
+#else
+namespace Shotgun.Console
+#endif
 {
     class ColorInfo
     {

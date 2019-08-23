@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.6;net45</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>Keystore.pfx</AssemblyOriginatorKeyFile>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -16,10 +16,23 @@
     <Build>$([System.DateTime]::get_Now().ToString('Mdd'))</Build>
     <Revision>$([System.DateTime]::get_Now().ToString('Hmm'))</Revision>
     <PackageVersion>1.0.$(Build).$(Revision)</PackageVersion>
-    <PackageIconUrl>https://github.com/cbanor/ColorConsole/blob/master/cmd.png?raw=true</PackageIconUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/cbanor/ColorConsole/master/cmd.png</PackageIconUrl>
     <RepositoryType />
 
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)'=='Debug|net45'">
+    <DefineConstants>TRACE;NET</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)'=='Release|net45'">
+    <DefineConstants>NET</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DefineConstants>COLOR_CONSOLE</DefineConstants>
+  </PropertyGroup>
+
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard1.6|AnyCPU'">
     <PlatformTarget>x64</PlatformTarget>

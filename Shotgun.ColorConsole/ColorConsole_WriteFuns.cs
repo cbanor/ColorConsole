@@ -4,7 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+#if COLOR_CONSOLE
 namespace Shotgun.ColorConsole
+#else
+namespace Shotgun.Console
+#endif
 {
     partial class ColorConsole
     {
